@@ -91,6 +91,22 @@ public class Vehicle implements VehicleAPI {
 		return this.vehicleName + " has been rented!!";
 	}
 
+	public String rentVehicleByHour() {
+		return this.vehicleName + " has been rented by Hour!!";
+	}
+
+	public String rentVehicleByDay() {
+		return this.vehicleName + " has been rented by Day!!";
+	}
+
+	public String rentVehicleAsGuest() {
+		return this.vehicleName + " has been rented As Guest!!";
+	}
+
+	public String rentVehicleAsMember() {
+		return this.vehicleName + " has been rented under membership plan!!";
+	}
+
 	public double runStrategy() {
 		return 0;
 	}
