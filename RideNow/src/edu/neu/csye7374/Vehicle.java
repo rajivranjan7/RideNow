@@ -1,5 +1,6 @@
 package edu.neu.csye7374;
 
+import edu.neu.csye7374.Behavioral_Strategy.DiscountStrategy;
 import edu.neu.csye7374.Creational_Builder.VehicleBuilder;
 
 public class Vehicle implements VehicleAPI {
@@ -109,15 +110,15 @@ public class Vehicle implements VehicleAPI {
 
 	public double runStrategy() {
 		double value = 0;
-		switch(Garage.usingStrategy){
+		switch(Garage.strategy){
 			case EmployeeDiscount:
-				value = Garage.getAlgorithmMap().get(DiscountStrategy.EmployeeDiscount).discountPrice(this);
+				value = Garage.getstrategyMap().get(DiscountStrategy.EmployeeDiscount).discountPrice(this);
 				break;
 			case StudentDiscount:
-				value = Garage.getAlgorithmMap().get(DiscountStrategy.StudentDiscount).discountPrice(this);
+				value = Garage.getstrategyMap().get(DiscountStrategy.StudentDiscount).discountPrice(this);
 				break;
 			case MemberDiscount:
-				value = Garage.getAlgorithmMap().get(DiscountStrategy.MemberDiscount).discountPrice(this);
+				value = Garage.getstrategyMap().get(DiscountStrategy.MemberDiscount).discountPrice(this);
 				break;
 			default:
 				value = vehiclePrice;
