@@ -108,7 +108,22 @@ public class Vehicle implements VehicleAPI {
 	}
 
 	public double runStrategy() {
-		return 0;
+		double value = 0;
+		switch(Garage.usingStrategy){
+			case EmployeeDiscount:
+				value = Garage.getAlgorithmMap().get(DiscountStrategy.EmployeeDiscount).discountPrice(this);
+				break;
+			case StudentDiscount:
+				value = Garage.getAlgorithmMap().get(DiscountStrategy.StudentDiscount).discountPrice(this);
+				break;
+			case MemberDiscount:
+				value = Garage.getAlgorithmMap().get(DiscountStrategy.MemberDiscount).discountPrice(this);
+				break;
+			default:
+				value = vehiclePrice;
+				break;
+		}
+		return value;
 	}
 
 
