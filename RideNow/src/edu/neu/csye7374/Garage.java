@@ -177,6 +177,14 @@ public class Garage implements GarageStateAPI {
         invoker.setCommand(new MembershipCommand((Vehicle) vehicle));
         System.out.println(invoker.invoke());
 
+        // Adapter Pattern
+        System.out.println("Demonstration of Adapter pattern to get the manufacturer name & age and print them");
+        vehicleBuilder = new VehicleBuilder(7, "Porsche", 3344, VehicleType.Sedan, "Zuffenhausen");
+        vehicle = VehicleFactory.getInstance().getObject(vehicleBuilder);
+        ManufacturerAPI adapter = new ManufacturerObjectAdapter(vehicle);
+
+        System.out.println(adapter.getManufacturerName());
+        System.out.println(adapter.getManufacturerAge());
     }
 }
 
