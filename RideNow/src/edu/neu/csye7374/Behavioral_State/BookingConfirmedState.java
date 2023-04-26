@@ -1,14 +1,15 @@
 package edu.neu.csye7374.Behavioral_State;
 
+import edu.neu.csye7374.Behavioral_Observer.Booking;
 import edu.neu.csye7374.Vehicle;
 
 public class BookingConfirmedState implements BookingStateAPI {
 
-    private Vehicle vehicle;
+    private Booking booking;
 
-    public BookingConfirmedState(Vehicle vehicle) {
+    public BookingConfirmedState(Booking booking) {
         super();
-        this.vehicle = vehicle;
+        this.booking = booking;
     }
 
     @Override

@@ -136,7 +136,7 @@ public class Garage implements GarageStateAPI {
         System.out.println("***************************************************************************************");
         System.out.println("Demonstrating of Builder pattern. Delegating the responsibilty of creating Books objects to Book Builder which implements build method and builds book object for us");
         System.out.println("Using Factory and singleton pattern to get only single instance of Book Builder object");
-        VehicleBuilder vehicleBuilder = new VehicleBuilder(1, "RAV4", 26150, VehicleType.SUV, "Toyota");
+        VehicleBuilder vehicleBuilder = new VehicleBuilder(1, "RAV4", 2610, VehicleType.SUV, "Toyota");
         VehicleAPI vehicle = VehicleFactory.getInstance().getObject(vehicleBuilder);
         vehicleList.add((Vehicle) vehicle);
         System.out.println(vehicle);
