@@ -1,6 +1,6 @@
 package edu.neu.csye7374;
 
-import edu.neu.csye7374.Behavioral_Strategy.DiscountStrategy;
+import edu.neu.csye7374.Behavioral_Strategy.*;
 import edu.neu.csye7374.Creational_Builder.VehicleBuilder;
 
 public class Vehicle implements VehicleAPI {
