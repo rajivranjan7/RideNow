@@ -6,12 +6,12 @@ public class Manufacturer implements ManufacturerAPI{
     private int yearEstablished;
     private Arraylist<String> vehicleProducts;
 
-    public Manufacturer(ManufacturerBuilder builder) {
+    public Manufacturer() {
         super();
-        this.manufacturerName = builder.getManufacturerName();
-        this.manufacturerPhoneNum = builder.getManufacturerPhoneNum;
-        this.yearEstablished = builder.getYearEstablished;
-        this.vehicleProducts = builder.getVehicleProducts();
+//        this.manufacturerName = manufacturerName;
+//        this.manufacturerPhoneNum = manufacturerPhoneNum;
+//        this.yearEstablished = yearEstablished;
+//        this.vehicleProducts = vehicleProducts;
     }
     public String getManufacturerName() {
         return manufacturerName;
