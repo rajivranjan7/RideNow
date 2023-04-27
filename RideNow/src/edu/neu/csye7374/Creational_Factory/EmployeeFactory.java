@@ -11,7 +11,8 @@ public class EmployeeFactory extends AbstractFactory<Employee> {
 		super();
 		instance=null;
 	}
-	
+
+	//Lazy Singleton factory
 	public static synchronized EmployeeFactory getInstance() {
 		if (instance == null) {
 			instance = new EmployeeFactory();

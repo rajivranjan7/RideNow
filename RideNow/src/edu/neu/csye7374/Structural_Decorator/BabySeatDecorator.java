@@ -3,6 +3,9 @@ package edu.neu.csye7374.Structural_Decorator;
 import edu.neu.csye7374.VehicleAPI;
 
 public class BabySeatDecorator extends DecoratorAPI{
+
+    // Decorator adding Baby-seat feature to the vehicle
+
     public BabySeatDecorator(VehicleAPI obj) {
         super(obj);
     }

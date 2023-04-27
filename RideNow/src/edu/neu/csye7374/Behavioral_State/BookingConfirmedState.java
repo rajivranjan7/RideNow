@@ -5,6 +5,8 @@ import edu.neu.csye7374.Vehicle;
 
 public class BookingConfirmedState implements BookingStateAPI {
 
+    // Booking State : Booking has been confirmed
+
     private Booking booking;
 
     public BookingConfirmedState(Booking booking) {

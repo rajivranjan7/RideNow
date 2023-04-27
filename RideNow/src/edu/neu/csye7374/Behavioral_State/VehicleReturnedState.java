@@ -5,6 +5,8 @@ import edu.neu.csye7374.Vehicle;
 
 public class VehicleReturnedState implements BookingStateAPI {
 
+    // Booking State : Vehicle has been returned
+
     private Booking booking;
 
     public VehicleReturnedState(Booking booking) {

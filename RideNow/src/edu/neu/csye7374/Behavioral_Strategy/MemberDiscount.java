@@ -3,7 +3,9 @@ package edu.neu.csye7374.Behavioral_Strategy;
 import edu.neu.csye7374.Vehicle;
 
 public class MemberDiscount implements DiscountStrategyAPI {
-	
+
+	//Strategy to determine discount algorithm for Ride-Now Members exclusively
+
 	@Override
 	public double discountPrice(Vehicle vehicle) {
 		// TODO Auto-generated method stub

@@ -4,6 +4,8 @@ import edu.neu.csye7374.Vehicle;
 
 public class EmployeeDiscount implements DiscountStrategyAPI{
 
+	//Strategy to determine discount algorithm for Employees
+
 	@Override
 	public double discountPrice(Vehicle vehicle) {
 		// TODO Auto-generated method stub

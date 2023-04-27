@@ -4,6 +4,8 @@ import edu.neu.csye7374.Garage;
 
 public class StockState implements GarageStateAPI  {
 
+    // Garage State : Stock
+
     private static Garage garage;
 
     public  StockState(Garage garage) {

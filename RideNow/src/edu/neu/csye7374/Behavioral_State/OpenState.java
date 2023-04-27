@@ -4,6 +4,8 @@ import edu.neu.csye7374.Garage;
 
 public class OpenState implements GarageStateAPI {
 
+    // Garage State : Open
+
     private static Garage garage;
 
     public OpenState(Garage garage) {

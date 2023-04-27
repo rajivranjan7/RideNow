@@ -3,6 +3,9 @@ package edu.neu.csye7374.Structural_Decorator;
 import edu.neu.csye7374.VehicleAPI;
 
 public class FullTankDecorator extends DecoratorAPI{
+
+    // Decorator adding Full tank fuel to the vehicle
+
     public FullTankDecorator(VehicleAPI obj) {
         super(obj);
     }

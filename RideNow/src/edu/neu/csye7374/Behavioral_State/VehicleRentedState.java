@@ -5,6 +5,8 @@ import edu.neu.csye7374.Vehicle;
 
 public class VehicleRentedState implements BookingStateAPI {
 
+    // Booking State : Vehicle has been rented
+
     private Booking booking;
 
     public VehicleRentedState(Booking booking) {

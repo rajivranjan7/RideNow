@@ -3,6 +3,9 @@ package edu.neu.csye7374.Structural_Decorator;
 import edu.neu.csye7374.VehicleAPI;
 
 public class BumperToBumperInsuranceDecorator extends DecoratorAPI{
+
+    // Decorator adding Bumper-to-Bumper feature to the vehicle
+
     public BumperToBumperInsuranceDecorator(VehicleAPI obj) {
         super(obj);
     }

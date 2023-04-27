@@ -5,6 +5,7 @@ import edu.neu.csye7374.Vehicle;
 
 public class VerificationState implements BookingStateAPI{
 
+    // Booking State : Booking is being verified
     private Booking booking;
 
     public VerificationState(Booking booking) {
