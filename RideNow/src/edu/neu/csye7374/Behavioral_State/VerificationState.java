@@ -19,6 +19,7 @@ public class VerificationState implements BookingStateAPI{
 
     @Override
     public void bookingConfirmedState() {
+        booking.setState(booking.getBookingConfirmedState());
         System.out.println("SUCCESS - Booking confirmed!!");
     }
 

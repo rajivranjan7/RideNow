@@ -14,6 +14,7 @@ public class VehicleReturnedState implements BookingStateAPI {
 
     @Override
     public void verificationState() {
+        booking.setState(booking.getVerificationState());
         System.out.println("SUCCESS - Verification has been initiated!!");
     }
 

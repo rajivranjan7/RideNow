@@ -29,6 +29,7 @@ public class VehicleRentedState implements BookingStateAPI {
 
     @Override
     public void vehicleReturnedState() {
+        booking.setState(booking.getVehicleReturnedState());
         System.out.println("SUCCESS - Vehicle has been returned successfully!!");
     }
 }

@@ -8,10 +8,10 @@ public class QuantityObserver implements BookingObserver {
         if(booking.getDeliveryType() == DeliveryType.Delivery) {
             int count=booking.getVehicleCount();
             double total = booking.getVehicleCount();
-            if(count<=5) {
+            if(count<=2) {
                 booking.setDeliveryCost(10);
             }else  {
-                booking.setDeliveryCost(10 + (count-5)*1.5);
+                booking.setDeliveryCost(10 + (count-2)*2.5);
             }
         }
     }

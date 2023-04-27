@@ -1,62 +1,54 @@
 package edu.neu.csye7374.Structural_Adapter;
 
-import java.util.ArrayList;
 
-
-public class Manufacturer implements ManufacturerAPI{
+public class Manufacturer implements ManufacturerAPI, Cloneable{
     private String manufacturerName;
-    private String manufacturerPhoneNum;
     private int yearEstablished;
-    private ArrayList<String> vehicleProducts;
+    private static Manufacturer instance;
+
+    public static synchronized Manufacturer getInstance() {
+        if (instance == null) {
+            instance = new Manufacturer();
+        }
+        return instance;
+    }
 
     public Manufacturer() {
         super();
-//        this.manufacturerName = manufacturerName;
-//        this.manufacturerPhoneNum = manufacturerPhoneNum;
-//        this.yearEstablished = yearEstablished;
-//        this.vehicleProducts = vehicleProducts;
-    }
-//    public String getManufacturerName() {
-//        return manufacturerName;
-//    }
-
-    public void setManufacturerName(String manufacturerName) {
-        this.manufacturerName = manufacturerName;
-    }
-
-    public String getManufacturerPhoneNum() {
-        return manufacturerPhoneNum;
-    }
-
-    public void setManufacturerPhoneNum(String manufacturerPhoneNum) {
-        this.manufacturerPhoneNum = manufacturerPhoneNum;
     }
 
     public int getYearEstablished() {
         return yearEstablished;
     }
-
-    public void setYearEstablished(int yearEstablished) {
+    public Manufacturer setYearEstablished(int yearEstablished) {
         this.yearEstablished = yearEstablished;
+        return this;
     }
 
-    public ArrayList<String> getVehicleProducts() {
-        return vehicleProducts;
-    }
-
-    public void setVehicleProducts(ArrayList<String> vehicleProducts) {
-        this.vehicleProducts = vehicleProducts;
+    public Manufacturer setManufacturerName(String manufacturerName) {
+        this.manufacturerName = manufacturerName;
+        return this;
     }
 
     @Override
     public String getManufacturerName() {
-        // TODO Auto-generated method stub
         return "Manufacturer Name: "+ this.manufacturerName;
     }
     @Override
     public String toString() {
-        return "Manufacturer [manufacturerName=" + manufacturerName + ", manufacturerPhoneNum=" + manufacturerPhoneNum + ", yearEstablished=" + yearEstablished
-                + ", vehicleProducts=" + vehicleProducts + "]";
+        return "Manufacturer [manufacturerName=" + manufacturerName + ", yearEstablished=" + yearEstablished + "]";
+    }
+
+    @Override
+    public Manufacturer clone() {
+        Manufacturer clone = null;
+
+        try {
+            clone = (Manufacturer)super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return clone;
     }
 
 }

@@ -1,19 +1,25 @@
 package edu.neu.csye7374;
 
 import edu.neu.csye7374.Behavioral_Command.*;
+import edu.neu.csye7374.Behavioral_Observer.Booking;
 import edu.neu.csye7374.Behavioral_State.ClosedState;
 import edu.neu.csye7374.Behavioral_State.GarageStateAPI;
 import edu.neu.csye7374.Behavioral_State.OpenState;
 import edu.neu.csye7374.Behavioral_State.StockState;
 import edu.neu.csye7374.Behavioral_Strategy.*;
+import edu.neu.csye7374.Creational_Builder.EmployeeBuilder;
 import edu.neu.csye7374.Creational_Builder.VehicleBuilder;
+import edu.neu.csye7374.Creational_Factory.EmployeeFactory;
 import edu.neu.csye7374.Creational_Factory.VehicleFactory;
 import edu.neu.csye7374.Structural_Adapter.*;
+import edu.neu.csye7374.Structural_Decorator.ACDecorator;
+import edu.neu.csye7374.Structural_Decorator.BabySeatDecorator;
+import edu.neu.csye7374.Structural_Decorator.BumperToBumperInsuranceDecorator;
+import edu.neu.csye7374.Structural_Decorator.ThirdPartyInsuranceDecorator;
+import edu.neu.csye7374.Structural_Facade.BookingFacade;
+import edu.neu.csye7374.Structural_Facade.DeliveryType;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Garage implements GarageStateAPI {
 
@@ -29,7 +35,6 @@ public class Garage implements GarageStateAPI {
 
     private static Map<DiscountStrategy, DiscountStrategyAPI> strategyMap = new HashMap<>();
     {
-//    	strategyMap.put(DiscountStrategy.NONE, null);
         strategyMap.put(DiscountStrategy.StudentDiscount, new StudentDiscount());
         strategyMap.put(DiscountStrategy.EmployeeDiscount, new EmployeeDiscount());
         strategyMap.put(DiscountStrategy.MemberDiscount, new MemberDiscount());
@@ -133,10 +138,9 @@ public class Garage implements GarageStateAPI {
 
         List<Vehicle> vehicleList = new ArrayList<>();
 
-        //Builder Pattern and getting object of Builder using Factory and Singleton Pattern
+        //Builder, Factory and Singleton Pattern
         System.out.println("***************************************************************************************");
-        System.out.println("Demonstrating of Builder pattern. Delegating the responsibilty of creating Books objects to Book Builder which implements build method and builds book object for us");
-        System.out.println("Using Factory and singleton pattern to get only single instance of Book Builder object");
+        System.out.println("Demonstration of Builder pattern, Factory and Singleton patterns. \nVehicleBuilder calls build method to create vehicle objects. \nCreate only single instance of Vehicle Builder object using Factory and singleton pattern");
         VehicleBuilder vehicleBuilder = new VehicleBuilder(1, "RAV4", 2610, VehicleType.SUV, "Toyota");
         VehicleAPI vehicle = VehicleFactory.getInstance().getObject(vehicleBuilder);
         vehicleList.add((Vehicle) vehicle);
@@ -166,6 +170,24 @@ public class Garage implements GarageStateAPI {
         vehicleList.add((Vehicle)vehicle);
         System.out.println("***************************************************************************************");
 
+        //Prototype Pattern to clone the object of manufacturer
+        System.out.println("***************************************************************************************");
+        System.out.println("Demonstration of Prototype pattern to clone the object of Manufacturer");
+        Manufacturer manufacturer = Manufacturer.getInstance().clone();
+        manufacturer.setManufacturerName("Ford")
+                .setYearEstablished(1903);
+        System.out.println(manufacturer);
+
+        //Adapter Pattern to adapt vehicle with manufacturer
+        ManufacturerObjectAdapter adpater = new ManufacturerObjectAdapter(vehicle);
+
+        System.out.println("***************************************************************************************");
+        System.out.println("Below is manufacturer name calling with legacy Vehicle object.");
+        System.out.println(vehicle.getVehicleManufacturer());
+        System.out.println("Demonstration of Adapter pattern by showing the manufacturer name calling with adapter object.");
+        System.out.println(adpater.getManufacturerName());
+        System.out.println("***************************************************************************************");
+
         //Command Pattern
         System.out.println("Demonstration of Command pattern to send the request for all books orders and print them");
         CommandInvoker invoker = CommandInvoker.getInstance();
@@ -178,13 +200,53 @@ public class Garage implements GarageStateAPI {
         invoker.setCommand(new MembershipCommand((Vehicle) vehicle));
         System.out.println(invoker.invoke());
 
-        // Adapter Pattern
-        System.out.println("Demonstration of Adapter pattern to get the manufacturer name & age and print them");
-        vehicleBuilder = new VehicleBuilder(7, "Porsche", 3344, VehicleType.Sedan, "Zuffenhausen");
-        vehicle = VehicleFactory.getInstance().getObject(vehicleBuilder);
-        ManufacturerAPI adapter = new ManufacturerObjectAdapter(vehicle);
+        //Demonstration of facade pattern and decorator pattern
+        System.out.println("Demonstration of Facade pattern and adding Decorator pattern to decorate books and adding it to our order list");
+        System.out.println("Demonstration of Observer pattern to notify the delivery cost and discount observer of changes as the number of our orders added into our booking list");
 
-        System.out.println(adapter.getManufacturerName());
+        BookingFacade facade = new BookingFacade(vehicleList.get(0));
+        Booking booking = facade.booking();
+        booking.setDeliveryType(DeliveryType.Delivery);
+        System.out.println(booking);
+
+        booking.addVehicle(new ThirdPartyInsuranceDecorator(vehicleList.get(1)));
+        System.out.println(booking);
+        booking.addVehicle(new BabySeatDecorator(vehicleList.get(2)));
+        System.out.println(booking);
+        booking.addVehicle(new BumperToBumperInsuranceDecorator(vehicleList.get(3)));
+        System.out.println(booking);
+        booking.addVehicle(new ACDecorator(vehicleList.get(4)));
+        System.out.println(booking);
+        System.out.println("***************************************************************************************");
+
+        //State Pattern
+        System.out.println("Demonstration of state pattern completed life cycle of booking transitioning from verification to returned state");
+
+        booking.getState().verificationState();
+        booking.getState().vehicleRentedState();
+        booking.getState().bookingConfirmedState();
+        booking.getState().vehicleReturnedState();
+        booking.getState().vehicleRentedState();
+        booking.getState().vehicleReturnedState();
+        System.out.println("***************************************************************************************");
+
+        //Strategy Pattern
+        System.out.println("Demonstration of strategy pattern to show different discounts applied to original price and final price after student and employee discounts ");
+        Garage garage = new Garage("RideNow");
+        EmployeeBuilder empBuilder = new EmployeeBuilder(1,30,"John","Doe",20);
+        Employee emp = EmployeeFactory.getInstance().getObject(empBuilder);
+        System.out.println("Using Factory and singleton pattern to get only single instance of Employee Builder object");
+        System.out.println(emp);
+        System.out.println("***************************************************************************************");
+
+        System.out.println("Vehicle before discount: \n"+ vehicle);
+
+        double price=0;
+        for(DiscountStrategy strategy : Garage.getstrategyMap().keySet()){
+            garage.setStrategy(strategy);
+            price = ((Vehicle)vehicle).runStrategy();
+            System.out.println("Vehicle price after discount: " + Garage.getstrategyMap().get(strategy).discountDescription((Vehicle) vehicle) + " , " + price);
+        }
     }
 }
 

@@ -213,12 +213,6 @@ public class Booking implements BookingStateAPI {
         this.bookingCost = bookingCost;
     }
 
-//	public void addItem(double price) {
-//		orderCost+=price;
-//		count++;
-//		observers.forEach(o->o.updated(this));
-//	}
-
     public int getVehicleCount() {
         return vehicleList.size();
     }
@@ -241,7 +235,7 @@ public class Booking implements BookingStateAPI {
 
     @Override
     public String toString() {
-        return "Booking Details are as follows: \n[Id=" + id + ", itemCost=" + this.bookingCost + ", count=" + this.count + ", discount=" + this.discount
+        return "Booking Details are as follows: \n[Id=" + id + ", Vehicle Cost=" + this.bookingCost + ", count=" + this.count + ", discount=" + this.discount
                 + ", deliveryCost=" + this.deliveryCost+ "]\n";
     }
     @Override
