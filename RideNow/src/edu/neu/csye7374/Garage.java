@@ -8,6 +8,7 @@ import edu.neu.csye7374.Behavioral_State.StockState;
 import edu.neu.csye7374.Behavioral_Strategy.*;
 import edu.neu.csye7374.Creational_Builder.VehicleBuilder;
 import edu.neu.csye7374.Creational_Factory.VehicleFactory;
+import edu.neu.csye7374.Structural_Adapter.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -184,7 +185,6 @@ public class Garage implements GarageStateAPI {
         ManufacturerAPI adapter = new ManufacturerObjectAdapter(vehicle);
 
         System.out.println(adapter.getManufacturerName());
-        System.out.println(adapter.getManufacturerAge());
     }
 }
 

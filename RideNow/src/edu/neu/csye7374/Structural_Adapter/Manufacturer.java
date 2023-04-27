@@ -1,10 +1,13 @@
 package edu.neu.csye7374.Structural_Adapter;
 
+import java.util.ArrayList;
+
+
 public class Manufacturer implements ManufacturerAPI{
     private String manufacturerName;
     private String manufacturerPhoneNum;
     private int yearEstablished;
-    private Arraylist<String> vehicleProducts;
+    private ArrayList<String> vehicleProducts;
 
     public Manufacturer() {
         super();
@@ -13,9 +16,9 @@ public class Manufacturer implements ManufacturerAPI{
 //        this.yearEstablished = yearEstablished;
 //        this.vehicleProducts = vehicleProducts;
     }
-    public String getManufacturerName() {
-        return manufacturerName;
-    }
+//    public String getManufacturerName() {
+//        return manufacturerName;
+//    }
 
     public void setManufacturerName(String manufacturerName) {
         this.manufacturerName = manufacturerName;
@@ -37,11 +40,11 @@ public class Manufacturer implements ManufacturerAPI{
         this.yearEstablished = yearEstablished;
     }
 
-    public Arraylist<String> getVehicleProducts() {
+    public ArrayList<String> getVehicleProducts() {
         return vehicleProducts;
     }
 
-    public void setVehicleProducts(Arraylist<String> vehicleProducts) {
+    public void setVehicleProducts(ArrayList<String> vehicleProducts) {
         this.vehicleProducts = vehicleProducts;
     }
 
