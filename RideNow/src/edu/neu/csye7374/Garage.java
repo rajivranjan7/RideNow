@@ -139,8 +139,8 @@ public class Garage implements GarageStateAPI {
         List<Vehicle> vehicleList = new ArrayList<>();
 
         //Builder, Factory and Singleton Pattern
-        System.out.println("***************************************************************************************");
-        System.out.println("Demonstration of Builder pattern, Factory and Singleton patterns. \nVehicleBuilder calls build method to create vehicle objects. \nCreate only single instance of Vehicle Builder object using Factory and singleton pattern");
+        System.out.println("*********************************************************************************************************************");
+        System.out.println("Demonstration of Builder pattern, Factory and Singleton patterns.\nCreate only single instance of Vehicle Builder object using Factory and singleton pattern");
         VehicleBuilder vehicleBuilder = new VehicleBuilder(1, "RAV4", 2610, VehicleType.SUV, "Toyota");
         VehicleAPI vehicle = VehicleFactory.getInstance().getObject(vehicleBuilder);
         vehicleList.add((Vehicle) vehicle);
@@ -168,10 +168,9 @@ public class Garage implements GarageStateAPI {
         vehicleBuilder = new VehicleBuilder(6, "Accord", 2550, VehicleType.Sedan, "Honda");
         vehicle = VehicleFactory.getInstance().getObject(vehicleBuilder);
         vehicleList.add((Vehicle)vehicle);
-        System.out.println("***************************************************************************************");
 
         //Prototype Pattern to clone the object of manufacturer
-        System.out.println("***************************************************************************************");
+        System.out.println("*********************************************************************************************************************");
         System.out.println("Demonstration of Prototype pattern to clone the object of Manufacturer");
         Manufacturer manufacturer = Manufacturer.getInstance().clone();
         manufacturer.setManufacturerName("Ford")
@@ -179,17 +178,17 @@ public class Garage implements GarageStateAPI {
         System.out.println(manufacturer);
 
         //Adapter Pattern to adapt vehicle with manufacturer
-        ManufacturerObjectAdapter adpater = new ManufacturerObjectAdapter(vehicle);
+        ManufacturerObjectAdapter adapter = new ManufacturerObjectAdapter(vehicle);
 
-        System.out.println("***************************************************************************************");
+        System.out.println("*********************************************************************************************************************");
         System.out.println("Below is manufacturer name calling with legacy Vehicle object.");
         System.out.println(vehicle.getVehicleManufacturer());
         System.out.println("Demonstration of Adapter pattern by showing the manufacturer name calling with adapter object.");
-        System.out.println(adpater.getManufacturerName());
-        System.out.println("***************************************************************************************");
+        System.out.println(adapter.getManufacturerName());
+        System.out.println("*********************************************************************************************************************");
 
         //Command Pattern
-        System.out.println("Demonstration of Command pattern to send the request for all books orders and print them");
+        System.out.println("Demonstration of Command pattern to rent by day/hour/AsGuest/AsMember");
         CommandInvoker invoker = CommandInvoker.getInstance();
         invoker.setCommand(new RentByDayCommand((Vehicle) vehicle));
         System.out.println(invoker.invoke());
@@ -199,11 +198,10 @@ public class Garage implements GarageStateAPI {
         System.out.println(invoker.invoke());
         invoker.setCommand(new MembershipCommand((Vehicle) vehicle));
         System.out.println(invoker.invoke());
+        System.out.println("*********************************************************************************************************************");
 
         //Demonstration of facade pattern and decorator pattern
-        System.out.println("Demonstration of Facade pattern and adding Decorator pattern to decorate books and adding it to our order list");
-        System.out.println("Demonstration of Observer pattern to notify the delivery cost and discount observer of changes as the number of our orders added into our booking list");
-
+        System.out.println("Demonstration of Facade and Decorator pattern - using different types of decorator which alters the total price.\nAlso demonstrate the Observer pattern which notifies the observer when any vehicle gets added to the booking list");
         BookingFacade facade = new BookingFacade(vehicleList.get(0));
         Booking booking = facade.booking();
         booking.setDeliveryType(DeliveryType.Delivery);
@@ -217,10 +215,10 @@ public class Garage implements GarageStateAPI {
         System.out.println(booking);
         booking.addVehicle(new ACDecorator(vehicleList.get(4)));
         System.out.println(booking);
-        System.out.println("***************************************************************************************");
+        System.out.println("*********************************************************************************************************************");
 
         //State Pattern
-        System.out.println("Demonstration of state pattern completed life cycle of booking transitioning from verification to returned state");
+        System.out.println("Demonstration of state pattern shows the transitions from verification to returned state");
 
         booking.getState().verificationState();
         booking.getState().vehicleRentedState();
@@ -228,16 +226,16 @@ public class Garage implements GarageStateAPI {
         booking.getState().vehicleReturnedState();
         booking.getState().vehicleRentedState();
         booking.getState().vehicleReturnedState();
-        System.out.println("***************************************************************************************");
+        System.out.println("*********************************************************************************************************************");
 
         //Strategy Pattern
-        System.out.println("Demonstration of strategy pattern to show different discounts applied to original price and final price after student and employee discounts ");
+        System.out.println("Demonstration of strategy pattern to show different discounts applied to original price and final price after student, employee and member discounts ");
         Garage garage = new Garage("RideNow");
         EmployeeBuilder empBuilder = new EmployeeBuilder(1,30,"John","Doe",20);
         Employee emp = EmployeeFactory.getInstance().getObject(empBuilder);
         System.out.println("Using Factory and singleton pattern to get only single instance of Employee Builder object");
         System.out.println(emp);
-        System.out.println("***************************************************************************************");
+        System.out.println("*********************************************************************************************************************");
 
         System.out.println("Vehicle before discount: \n"+ vehicle);
 
@@ -247,6 +245,7 @@ public class Garage implements GarageStateAPI {
             price = ((Vehicle)vehicle).runStrategy();
             System.out.println("Vehicle price after discount: " + Garage.getstrategyMap().get(strategy).discountDescription((Vehicle) vehicle) + " , " + price);
         }
+        System.out.println("*********************************************************************************************************************");
     }
 }
 

@@ -235,7 +235,7 @@ public class Booking implements BookingStateAPI {
 
     @Override
     public String toString() {
-        return "Booking Details are as follows: \n[Id=" + id + ", Vehicle Cost=" + this.bookingCost + ", count=" + this.count + ", discount=" + this.discount
+        return "Booking Details are as follows: \n[Id=" + id + ", Total Cost=" + this.bookingCost + ", count=" + this.count + ", discount=" + this.discount
                 + ", deliveryCost=" + this.deliveryCost+ "]\n";
     }
     @Override

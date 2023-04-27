@@ -20,7 +20,6 @@ public class BookingFacade {
     public Booking booking() {
         Booking booking = new Booking();
         DecoratorAPI fullTankedVehicle = new FullTankDecorator(vehicle);
-        System.out.println(fullTankedVehicle);
         booking.addVehicle(fullTankedVehicle);
         return booking;
     }
