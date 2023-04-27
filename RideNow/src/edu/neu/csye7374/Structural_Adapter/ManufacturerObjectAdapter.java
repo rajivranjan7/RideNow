@@ -12,11 +12,6 @@ public class ManufacturerObjectAdapter implements ManufacturerAPI{
     @Override
     public String getManufacturerName() {
         // TODO Auto-generated method stub
-        return "Manufacturer Name: "+ vehicleAPI.getManufacturerName();
-    }
-    @Override
-    public int getManufacturerAge() {
-        // TODO Auto-generated method stub
-        return "Manufacturer Age"+ vehicleAPI.getManufacturerAge();
+        return "Manufacturer Name: "+ vehicleAPI.getVehicleManufacturer();
     }
 }

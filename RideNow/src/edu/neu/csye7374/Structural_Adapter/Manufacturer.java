@@ -51,12 +51,6 @@ public class Manufacturer implements ManufacturerAPI{
         return "Manufacturer Name: "+ this.manufacturerName;
     }
     @Override
-    public int getManufacturerAge() {
-        // TODO Auto-generated method stub
-        int age = 2023 - this.yearEstablished;
-        return "Manufacturer Age"+ age;
-    }
-    @Override
     public String toString() {
         return "Manufacturer [manufacturerName=" + manufacturerName + ", manufacturerPhoneNum=" + manufacturerPhoneNum + ", yearEstablished=" + yearEstablished
                 + ", vehicleProducts=" + vehicleProducts + "]";
